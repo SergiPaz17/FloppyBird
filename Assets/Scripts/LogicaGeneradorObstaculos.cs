@@ -27,7 +27,7 @@ public class LogicaGeneradorObstaculos : MonoBehaviour
         
         if (tiempoInicial > intervalo)
         {
-            posicionTuberia = posicionTuberia + 4;
+            posicionTuberia = posicionTuberia + 5;
             randomAltura = Random.Range(-7, 0);
             GameObject obstaculoNuevo = Instantiate(obstaculo);
             obstaculoNuevo.transform.position = transform.position + new Vector3(posicionTuberia, randomAltura , 0);

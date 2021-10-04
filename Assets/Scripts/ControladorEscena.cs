@@ -16,6 +16,17 @@ public class ControladorEscena : MonoBehaviour
     public GameObject Bronze;
     public GameObject Plata;
     public GameObject Oro;
+    public GameObject FondoNoche;
+    public GameObject FondoDia;
+    public GameObject BotonResume;
+    public GameObject CosaRara;
+    public GameObject Flecha;
+    public GameObject Dedo;
+    public GameObject tap2;
+    public GameObject FloppyFantasma;
+
+    private float tiempo = 0;
+
 
     private static int puntuacion;
 
@@ -49,7 +60,10 @@ public class ControladorEscena : MonoBehaviour
         }
         else if(puntuacion >= 9 && puntuacion <= 16)
         {
-
+            Plata.SetActive(true);
+        }else if (puntuacion >= 16)
+        {
+            Oro.SetActive(true);
         }
 
         audio.Stop();
@@ -63,6 +77,12 @@ public class ControladorEscena : MonoBehaviour
         Jugar.SetActive(false);
         Titulo.SetActive(false);
         CanvasPuntuacion.SetActive(true);
+        BotonResume.SetActive(false);
+        tap2.SetActive(false);
+        FloppyFantasma.SetActive(false);
+        CosaRara.SetActive(false);
+        Flecha.SetActive(false);
+        Dedo.SetActive(false);
 
     }
 
@@ -74,6 +94,20 @@ public class ControladorEscena : MonoBehaviour
     public void Pausar()
     {
         Time.timeScale = 0;
+        BotonResume.SetActive(true);
+
+    }
+
+    void Update()
+    {
+        tiempo += Time.deltaTime;
+
+        if (tiempo >= 10)
+        {
+            FondoDia.SetActive(false);
+            FondoNoche.SetActive(true);
+            
+        }
 
     }
 
