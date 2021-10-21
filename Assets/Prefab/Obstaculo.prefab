@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e86ae2dcfa94e558cff68a3ff18732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 2
+  velocidad: 2.5
 --- !u!1 &5715352082170649169
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e86ae2dcfa94e558cff68a3ff18732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 2
+  velocidad: 2.5
 --- !u!61 &6832330029541551551
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e86ae2dcfa94e558cff68a3ff18732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 2
+  velocidad: 2.5
 --- !u!61 &876579188369433061
 BoxCollider2D:
   m_ObjectHideFlags: 0

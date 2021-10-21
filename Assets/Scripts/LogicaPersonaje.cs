@@ -4,9 +4,8 @@ public class LogicaPersonaje : MonoBehaviour
 {
     public float velocity = 3f;
     private Rigidbody2D rb;
-    public Vector2 posicion;
 
-    public ControladorEscena controladorEscena;
+    public ControladorEscena controladorEscena; 
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +18,8 @@ public class LogicaPersonaje : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            posicion = rb.position;
             rb.velocity = Vector2.up * velocity;
-        }
+        } 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -24,6 +24,14 @@ public class ControladorEscena : MonoBehaviour
     public GameObject Dedo;
     public GameObject tap2;
     public GameObject FloppyFantasma;
+    public GameObject CanvasSkin;
+    public GameObject SkinBoton;
+    public GameObject Flappo;
+    public GameObject Flappo2;
+    public GameObject Flappo3;
+
+    private int numeroSkin;
+
 
     private float tiempo = 0;
 
@@ -32,6 +40,8 @@ public class ControladorEscena : MonoBehaviour
 
     public TMP_Text puntuacionTMP;
 
+    // Imports de Otros Scripts
+    public EscogerSkin Skin;
     public LogicaPuntuacion LogicaPuntuacion;
 
     // Start is called before the first frame update
@@ -108,8 +118,42 @@ public class ControladorEscena : MonoBehaviour
             FondoNoche.SetActive(true);
             
         }
-
     }
 
+    public void CambiarSkin()
+    {
+        canvasPerder.SetActive(false);
+        CanvasSkin.SetActive(true);
+      
+    }
+
+    public void VolverMenuPrincipal()
+    {
+        CanvasSkin.SetActive(false);
+        canvasPerder.SetActive(true);
+        numeroSkin = Skin.NumeroSkin;
+
+        Debug.Log(numeroSkin);
+        if (numeroSkin == 1)
+        {
+            Flappo.SetActive(true);
+            Flappo2.SetActive(false);
+            Flappo3.SetActive(false);
+        }
+        if (numeroSkin == 2)
+        {
+            Flappo.SetActive(false);
+            Flappo2.SetActive(true);
+            Flappo3.SetActive(false);
+        }
+
+        if (numeroSkin == 3)
+        {
+            Flappo.SetActive(false);
+            Flappo2.SetActive(false);
+            Flappo3.SetActive(true);
+        }
+
+    }
 
 }
