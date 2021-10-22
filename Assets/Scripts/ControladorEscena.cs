@@ -29,16 +29,20 @@ public class ControladorEscena : MonoBehaviour
     public GameObject Flappo;
     public GameObject Flappo2;
     public GameObject Flappo3;
-
+    public GameObject BestPuntuacion;
+     
     private int numeroSkin;
 
 
     private float tiempo = 0;
+    public int PuntuacionMaxima;
+
 
 
     private static int puntuacion;
 
     public TMP_Text puntuacionTMP;
+    public TMP_Text puntuacionMaximaTPM;
 
     // Imports de Otros Scripts
     public EscogerSkin Skin;
@@ -63,8 +67,11 @@ public class ControladorEscena : MonoBehaviour
         CanvasPuntuacion.SetActive(false);
         Score.SetActive(true);
         Puntuacion.SetActive(true);
+        BestPuntuacion.SetActive(true);
 
-        if(puntuacion <= 8)
+        GuardarPuntuacionMaxima();
+
+        if (puntuacion <= 8)
         {
             Bronze.SetActive(true);
         }
@@ -78,11 +85,13 @@ public class ControladorEscena : MonoBehaviour
 
         audio.Stop();
 
+       
         
     }
 
     public void Play()
     {
+
         Time.timeScale = 1;
         Jugar.SetActive(false);
         Titulo.SetActive(false);
@@ -93,8 +102,11 @@ public class ControladorEscena : MonoBehaviour
         CosaRara.SetActive(false);
         Flecha.SetActive(false);
         Dedo.SetActive(false);
+        SkinBoton.SetActive(false);
+
 
     }
+
 
     public void Reiniciar()
     {
@@ -110,6 +122,7 @@ public class ControladorEscena : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(PuntuacionMaxima);
         tiempo += Time.deltaTime;
 
         if (tiempo >= 10)
@@ -152,6 +165,17 @@ public class ControladorEscena : MonoBehaviour
             Flappo.SetActive(false);
             Flappo2.SetActive(false);
             Flappo3.SetActive(true);
+        }
+
+    }
+
+    public void GuardarPuntuacionMaxima()
+    {
+
+        if (puntuacion > PuntuacionMaxima)
+        {
+            PuntuacionMaxima += puntuacion;
+            puntuacionMaximaTPM.SetText(PuntuacionMaxima.ToString());
         }
 
     }

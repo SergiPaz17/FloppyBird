@@ -13,6 +13,12 @@ public class EscogerSkin : MonoBehaviour
 
     public ControladorEscena escena;
 
+    private void Start()
+    {
+        Skin1.SetActive(true);
+        Skin2.SetActive(false);
+        Skin3.SetActive(false);
+    }
 
 
     public void SkinUp()
