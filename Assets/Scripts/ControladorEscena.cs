@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ControladorEscena : MonoBehaviour
 {
@@ -32,14 +33,14 @@ public class ControladorEscena : MonoBehaviour
     public GameObject BestPuntuacion;
      
     private int numeroSkin;
-
+    public TMP_Text HiScore;
 
     private float tiempo = 0;
     public int PuntuacionMaxima;
 
 
 
-    private static int puntuacion;
+    public int puntuacion;
 
     public TMP_Text puntuacionTMP;
     public TMP_Text puntuacionMaximaTPM;
@@ -51,6 +52,7 @@ public class ControladorEscena : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        HiScore.text = PlayerPrefs.GetInt("HiScore", 0).ToString();
         Time.timeScale = 0;
     }
 
@@ -69,7 +71,12 @@ public class ControladorEscena : MonoBehaviour
         Puntuacion.SetActive(true);
         BestPuntuacion.SetActive(true);
 
-        GuardarPuntuacionMaxima();
+        if(puntuacion > PlayerPrefs.GetInt("HiScore", 0))
+        {
+            PlayerPrefs.SetInt("HiScore", puntuacion);
+        }
+
+        
 
         if (puntuacion <= 8)
         {
@@ -122,7 +129,6 @@ public class ControladorEscena : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(PuntuacionMaxima);
         tiempo += Time.deltaTime;
 
         if (tiempo >= 10)
@@ -165,19 +171,10 @@ public class ControladorEscena : MonoBehaviour
             Flappo.SetActive(false);
             Flappo2.SetActive(false);
             Flappo3.SetActive(true);
+                
         }
 
     }
 
-    public void GuardarPuntuacionMaxima()
-    {
-
-        if (puntuacion > PuntuacionMaxima)
-        {
-            PuntuacionMaxima += puntuacion;
-            puntuacionMaximaTPM.SetText(PuntuacionMaxima.ToString());
-        }
-
-    }
 
 }
