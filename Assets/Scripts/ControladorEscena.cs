@@ -31,12 +31,19 @@ public class ControladorEscena : MonoBehaviour
     public GameObject Flappo2;
     public GameObject Flappo3;
     public GameObject BestPuntuacion;
+    public GameObject CanvasHighScores;
+    public GameObject CanvasNombreJugador;
+    
      
     private int numeroSkin;
     public TMP_Text HiScore;
 
+    private int puntuacionMaxima;
     private float tiempo = 0;
     public int PuntuacionMaxima;
+    public string nombreJugador;
+
+    public InputField NombreJugador;
 
 
 
@@ -48,10 +55,23 @@ public class ControladorEscena : MonoBehaviour
     // Imports de Otros Scripts
     public EscogerSkin Skin;
     public LogicaPuntuacion LogicaPuntuacion;
+    public Leadeboardcontroller Leaderboard;
 
     // Start is called before the first frame update
     void Start()
     {
+        nombreJugador = PlayerPrefs.GetString("NombreJugador");
+        if(PlayerPrefs.HasKey("NombreJugador"))
+        {
+            CanvasNombreJugador.SetActive(false);
+            canvasPerder.SetActive(true);
+        }else
+        {
+            canvasPerder.SetActive(false);
+            CanvasNombreJugador.SetActive(true);
+        }
+
+
         HiScore.text = PlayerPrefs.GetInt("HiScore", 0).ToString();
         Time.timeScale = 0;
     }
@@ -74,6 +94,8 @@ public class ControladorEscena : MonoBehaviour
         if(puntuacion > PlayerPrefs.GetInt("HiScore", 0))
         {
             PlayerPrefs.SetInt("HiScore", puntuacion);
+            puntuacion = puntuacionMaxima;
+            
         }
 
         
@@ -91,6 +113,8 @@ public class ControladorEscena : MonoBehaviour
         }
 
         audio.Stop();
+
+
 
        
         
@@ -131,7 +155,7 @@ public class ControladorEscena : MonoBehaviour
     {
         tiempo += Time.deltaTime;
 
-        if (tiempo >= 10)
+        if (tiempo >= 15)
         {
             FondoDia.SetActive(false);
             FondoNoche.SetActive(true);
@@ -173,6 +197,23 @@ public class ControladorEscena : MonoBehaviour
             Flappo3.SetActive(true);
                 
         }
+
+    }
+
+    public void HighScores()
+    {
+        canvasPerder.SetActive(false);
+        CanvasHighScores.SetActive(true);
+    }
+
+
+    public void ConseguirNombre()
+    {
+
+        PlayerPrefs.SetString("NombreJugador", NombreJugador.text);
+
+        canvasPerder.SetActive(true);
+        CanvasNombreJugador.SetActive(false);
 
     }
 
