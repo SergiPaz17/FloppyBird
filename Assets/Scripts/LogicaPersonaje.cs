@@ -2,7 +2,7 @@
 
 public class LogicaPersonaje : MonoBehaviour
 {
-    public float velocity = 3f;
+    public float velocity = 1.6f;
     private Rigidbody2D rb;
 
     public ControladorEscena controladorEscena; 

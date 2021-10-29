@@ -33,8 +33,9 @@ public class ControladorEscena : MonoBehaviour
     public GameObject BestPuntuacion;
     public GameObject CanvasHighScores;
     public GameObject CanvasNombreJugador;
-    
-     
+    public GameObject botonScoreboard;
+
+
     private int numeroSkin;
     public TMP_Text HiScore;
 
@@ -60,12 +61,14 @@ public class ControladorEscena : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        //PlayerPrefs.DeleteKey("HiScore");
         nombreJugador = PlayerPrefs.GetString("NombreJugador");
-        if(PlayerPrefs.HasKey("NombreJugador"))
+        if (PlayerPrefs.HasKey("NombreJugador"))
         {
             CanvasNombreJugador.SetActive(false);
             canvasPerder.SetActive(true);
-        }else
+        } else
         {
             canvasPerder.SetActive(false);
             CanvasNombreJugador.SetActive(true);
@@ -83,7 +86,6 @@ public class ControladorEscena : MonoBehaviour
         puntuacionTMP.SetText(puntuacion.ToString());
 
         canvasPerder.SetActive(true);
-        Time.timeScale = 0;
         Gameover.SetActive(true);
         reiniciar.SetActive(true);
         CanvasPuntuacion.SetActive(false);
@@ -91,33 +93,32 @@ public class ControladorEscena : MonoBehaviour
         Puntuacion.SetActive(true);
         BestPuntuacion.SetActive(true);
 
-        if(puntuacion > PlayerPrefs.GetInt("HiScore", 0))
+        if (puntuacion > PlayerPrefs.GetInt("HiScore"))
         {
             PlayerPrefs.SetInt("HiScore", puntuacion);
             puntuacion = puntuacionMaxima;
-            
-        }
 
-        
+        }
 
         if (puntuacion <= 8)
         {
             Bronze.SetActive(true);
         }
-        else if(puntuacion >= 9 && puntuacion <= 16)
+        else if (puntuacion >= 9 && puntuacion <= 16)
         {
             Plata.SetActive(true);
-        }else if (puntuacion >= 16)
+        } else if (puntuacion >= 16)
         {
             Oro.SetActive(true);
         }
-
+        HiScore.text = PlayerPrefs.GetInt("HiScore", 0).ToString();
         audio.Stop();
 
+        Leaderboard.SubmitScore(PlayerPrefs.GetInt("HiScore"), nombreJugador);
 
 
-       
-        
+        Time.timeScale = 0;
+
     }
 
     public void Play()
@@ -134,6 +135,8 @@ public class ControladorEscena : MonoBehaviour
         Flecha.SetActive(false);
         Dedo.SetActive(false);
         SkinBoton.SetActive(false);
+        botonScoreboard.SetActive(false);
+        
 
 
     }
@@ -159,7 +162,7 @@ public class ControladorEscena : MonoBehaviour
         {
             FondoDia.SetActive(false);
             FondoNoche.SetActive(true);
-            
+
         }
     }
 
@@ -167,7 +170,7 @@ public class ControladorEscena : MonoBehaviour
     {
         canvasPerder.SetActive(false);
         CanvasSkin.SetActive(true);
-      
+
     }
 
     public void VolverMenuPrincipal()
@@ -195,7 +198,7 @@ public class ControladorEscena : MonoBehaviour
             Flappo.SetActive(false);
             Flappo2.SetActive(false);
             Flappo3.SetActive(true);
-                
+
         }
 
     }
@@ -204,6 +207,7 @@ public class ControladorEscena : MonoBehaviour
     {
         canvasPerder.SetActive(false);
         CanvasHighScores.SetActive(true);
+        Leaderboard.recogerDatosTabla();
     }
 
 
@@ -215,6 +219,12 @@ public class ControladorEscena : MonoBehaviour
         canvasPerder.SetActive(true);
         CanvasNombreJugador.SetActive(false);
 
+    }
+
+    public void Atras()
+    {
+        CanvasHighScores.SetActive(false);
+        canvasPerder.SetActive(true);
     }
 
 
