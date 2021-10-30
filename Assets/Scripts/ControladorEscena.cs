@@ -189,7 +189,6 @@ public class ControladorEscena : MonoBehaviour
         canvasPerder.SetActive(true);
         numeroSkin = Skin.NumeroSkin;
 
-        Debug.Log(numeroSkin);
         if (numeroSkin == 1)
         {
             Flappo.SetActive(true);
