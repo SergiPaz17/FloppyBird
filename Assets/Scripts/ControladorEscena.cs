@@ -58,6 +58,7 @@ public class ControladorEscena : MonoBehaviour
     public LogicaPuntuacion LogicaPuntuacion;
     public Leadeboardcontroller Leaderboard;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -136,7 +137,7 @@ public class ControladorEscena : MonoBehaviour
         Dedo.SetActive(false);
         SkinBoton.SetActive(false);
         botonScoreboard.SetActive(false);
-        
+
 
 
     }
@@ -156,6 +157,15 @@ public class ControladorEscena : MonoBehaviour
 
     void Update()
     {
+        nombreJugador = PlayerPrefs.GetString("NombreJugador");
+        if (!PlayerPrefs.HasKey("NombreJugador"))
+        {
+            canvasPerder.SetActive(false);
+            CanvasSkin.SetActive(false);
+            CanvasNombreJugador.SetActive(true);
+        }
+
+
         tiempo += Time.deltaTime;
 
         if (tiempo >= 15)
@@ -227,5 +237,9 @@ public class ControladorEscena : MonoBehaviour
         canvasPerder.SetActive(true);
     }
 
+    public void BorrarDatos()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 
 }

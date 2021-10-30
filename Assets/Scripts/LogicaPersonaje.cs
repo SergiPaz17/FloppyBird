@@ -4,6 +4,7 @@ public class LogicaPersonaje : MonoBehaviour
 {
     public float velocity = 1.6f;
     private Rigidbody2D rb;
+    private Transform Transform;
 
     public ControladorEscena controladorEscena; 
 
@@ -19,6 +20,7 @@ public class LogicaPersonaje : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             rb.velocity = Vector2.up * velocity;
+                  
         } 
     }
 

@@ -1,20 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EscogerSkin : MonoBehaviour
 {
     public GameObject Skin1;
     public GameObject Skin2;
     public GameObject Skin3;
+    string NombreJugador;
+
+    public TMP_Text CanvasNombreJugador;
 
 
     public int NumeroSkin = 1;
 
     public ControladorEscena escena;
 
+
     private void Start()
     {
+        
         Skin1.SetActive(true);
         Skin2.SetActive(false);
         Skin3.SetActive(false);
@@ -84,6 +90,11 @@ public class EscogerSkin : MonoBehaviour
     {
         Debug.Log(NumeroSkin);
         return NumeroSkin;
+    }
+
+    public void Update()
+    {
+        CanvasNombreJugador.text = PlayerPrefs.GetString("NombreJugador");
     }
 
 }
