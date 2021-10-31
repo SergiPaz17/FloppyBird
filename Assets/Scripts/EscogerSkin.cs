@@ -20,7 +20,6 @@ public class EscogerSkin : MonoBehaviour
 
     private void Start()
     {
-        
         Skin1.SetActive(true);
         Skin2.SetActive(false);
         Skin3.SetActive(false);

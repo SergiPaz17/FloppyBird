@@ -4,7 +4,6 @@ public class LogicaPersonaje : MonoBehaviour
 {
     public float velocity = 1.6f;
     private Rigidbody2D rb;
-    private Transform Transform;
 
     public ControladorEscena controladorEscena; 
 
@@ -17,11 +16,13 @@ public class LogicaPersonaje : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+  
         if (Input.GetMouseButtonDown(0))
-        {
-            rb.velocity = Vector2.up * velocity;
-                  
-        } 
+            {
+                rb.velocity = Vector2.up * velocity;
+
+            }
+            
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

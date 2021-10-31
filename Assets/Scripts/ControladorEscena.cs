@@ -34,6 +34,9 @@ public class ControladorEscena : MonoBehaviour
     public GameObject CanvasHighScores;
     public GameObject CanvasNombreJugador;
     public GameObject botonScoreboard;
+    public GameObject TextoPausa;
+    public GameObject PanelPausa;
+
 
 
     private int numeroSkin;
@@ -45,7 +48,6 @@ public class ControladorEscena : MonoBehaviour
     public string nombreJugador;
 
     public InputField NombreJugador;
-
 
 
     public int puntuacion;
@@ -137,6 +139,8 @@ public class ControladorEscena : MonoBehaviour
         Dedo.SetActive(false);
         SkinBoton.SetActive(false);
         botonScoreboard.SetActive(false);
+        TextoPausa.SetActive(false);
+        PanelPausa.SetActive(false);
 
 
 
@@ -151,6 +155,8 @@ public class ControladorEscena : MonoBehaviour
     public void Pausar()
     {
         Time.timeScale = 0;
+        PanelPausa.SetActive(true);
+        TextoPausa.SetActive(true);
         BotonResume.SetActive(true);
 
     }
