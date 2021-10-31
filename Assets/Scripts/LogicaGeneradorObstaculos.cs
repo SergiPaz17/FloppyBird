@@ -22,13 +22,13 @@ public class LogicaGeneradorObstaculos : MonoBehaviour
 
     void Update()
     {
-        
+
         if (tiempoInicial > intervalo)
         {
             posicionTuberia = posicionTuberia + 5;
             GameObject obstaculoNuevo = Instantiate(obstaculo);
             obstaculoNuevo.transform.position = transform.position + new Vector3(posicionTuberia, Random.Range(-7, 0), 0);
-            Destroy(obstaculoNuevo, 20);
+            Destroy(obstaculoNuevo, 40);
             tiempoInicial = 0;
         }
         else
